@@ -1,0 +1,47 @@
+fun reverse(a: IntArray, n: Int): IntArray {
+    var i: Int
+    var t: Int
+    i = 0
+    while (i < n / 2) {
+        t = a[i]
+        a[i] = a[n - i - 1]
+        a[n - i - 1] = t
+        i++
+    }
+    return a
+}
+
+
+fun main(args:Array<String>) {
+
+    var board: Array<IntArray> = arrayOf(intArrayOf(0, 1, 1, 0), intArrayOf(0, 1, 1, 0),intArrayOf(1, 0, 0, 1),intArrayOf(1, 0, 0, 1))
+
+    var result:Int=0
+
+    if(board.size<=2){
+        for (i in board.indices){
+            var next :Int=i+1
+            var arr = board[i].clone()
+
+            if(next<board.size && board[next].contentEquals (reverse(arr,arr.size))){
+                result = 0;
+            }else if(next < board.size){
+                result = -1;
+            }
+
+        }
+     }else{
+         for (i in board.indices){
+             var next:Int=i+1
+             if(next < board.size && board[next].contentEquals(reverse(board[i],board[i].size))){
+                 result += 1;
+
+             }
+         }
+   }
+
+
+    println(result)
+
+
+}

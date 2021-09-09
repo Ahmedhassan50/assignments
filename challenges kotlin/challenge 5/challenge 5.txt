@@ -1,0 +1,58 @@
+fun main(args:Array<String>) {
+
+    var seats  = arrayOf(arrayOf('#', '.', '#', '#', '.', '#'), arrayOf('.', '#', '#', '#', '#', '.'), arrayOf('#', '.', '#', '#', '.', '#'))
+
+
+    var result:Int=0
+
+    for ( i in seats.indices){
+        for (j in seats[i].indices){
+            var a: Int; var b: Int; var c1: Int; var c2: Int ; var d1: Int ; var d2: Int
+            if (i == 0) {
+                a = j - 1;  b = j + 1;
+
+
+                if (a < 0 && seats[i][j] != '#' && seats[i][b] == '#') {
+                    result += 1;
+                    seats[i][j] = '0';
+                } else if (a >= 0 && seats[i][j] != '#' && ((seats[i][a] == '#' && seats[i][b] == '#') || (seats[i][a] == '.' && seats[i][b] == '.'))) {
+                    seats[i][j] = '0';
+                    result += 1;
+
+                }
+            } else {
+                a = j - 1; b = j + 1;  c1 = i - 1;  c2 = j - 1; d1 = i - 1; d2 = j + 1;
+
+
+                if (c2 < 0 && seats[i][j] != '#' && (seats[d1][d2] == '#' || seats[d1][d2] != '0')) {
+
+                    seats[i][j] = '0';
+                    result += 1;
+                } else if (b == seats[i].size && seats[i][j] != '#' && (seats[i][a] == '#' || seats[i][a] != '0')
+                    && (seats[c1][c2] == '#' || seats[c1][c2] != '0')) {
+
+                    seats[i][j] = '0';
+                    result += 1;
+                } else if (a >= 0 && d2 < seats[i].size && seats[i][j] != '#' && (seats[i][a] == '#' || seats[i][a] != '0') && (seats[i][b] == '#' || seats[i][b] != '0')
+                    && (seats[c1][c2] == '#' || seats[c1][c2] != '0') && (seats[d1][d2] == '#' || seats[d1][d2] != '0')) {
+
+                    seats[i][j] = '0';
+                    result += 1;
+                }
+
+            }
+
+
+
+
+
+
+        }
+    }
+    println(result)
+
+
+
+
+
+}

@@ -1,0 +1,14 @@
+import java.util.regex.Pattern
+
+fun main(args:Array<String>) {
+
+    var s:String = readLine().toString().toLowerCase()
+    var p:String=readLine().toString().toLowerCase()
+
+    p= p.replace("?",".")
+    p=p.replace("*",".*")
+
+
+    println(Pattern.matches(p,s))
+
+}
